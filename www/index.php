@@ -24,4 +24,6 @@ ob_start();
 </div>
 <?php
   require_once(PATH . 'tpl/footer.php');
-ob_end_flush();
+$f = fopen(PATH . '/index.html', 'w') or die('Not open stream file');
+fputs($f, ob_get_flush());
+fclose($f);

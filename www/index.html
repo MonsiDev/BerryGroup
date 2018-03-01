@@ -5,20 +5,436 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" href="build/reset.css">
+        <link rel="stylesheet" href="build/fonts.css">
+        <link rel="stylesheet" href="build/css/build.min.css">
         <title>BerryGroup</title>
-        <link rel="stylesheet" href="css/jquery.mobile.css">
     </head>
     <body>
-        <div class="launch">
-          <img src="img/logo-large.png">
-        </div>
-        <div class="app">
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile.min.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript" src="js/launch.js"></script>
-    </body>
+  <div class="app" id="app">
+  <div class="app__list" id="app-list">
+    <div class="app__item" id="main">
+  <div class="main-header">
+  <button class="btn main-header__menu icon icon--menu" id="nav_show" data-activity="#main_nav"></button>
+  <img src="img/logo.png" alt="" class="main-header__logo">
+  <button class="icon icon--cart btn main-header__cart go-frame" data-frame="#basket"></button>
+</div>
+  <div class="main-nav" id="main_nav">
+  <div class="main-nav__user">
+    <img src="img/auth.png" alt="" class="main-nav__icon">
+    <div class="main-nav__action">
+        <a href="#" class="main-nav__auth">Войдите</a>
+        <a href="#" class="main-nav__reg">Или зарегестрируйтесь</a>
+    </div>
+  </div>
+  <a href="#" class="main-nav__item go-frame" data-frame="#basket">
+    <i class="icon icon--cart-item"></i>
+    <span>Корзина</span>
+  </a>
+  <a href="#" class="main-nav__item">
+    <i class="icon icon--food"></i>
+    <span>Заведения</span>
+  </a>
+  <a href="#" class="main-nav__item">
+    <i class="icon icon--card"></i>
+    <span>Накопительные карты</span>
+  </a>
+  <a href="#" class="main-nav__item main-nav__item--border">
+    <i class="icon icon--phone"></i>
+    <span>Позвонить нам</span>
+  </a>
+  <a href="#" class="main-nav__item">
+    <i class="icon icon--cog"></i>
+    <span>Настройки</span>
+  </a>
+</div>
+  <div class="main-slider">
+  
+</div>
+  <div class="main-cards">
+  <div class="main-card go-frame" data-frame="#restaurant">
+  <img src="img/spletni.png" class="main-card__bg" alt="">
+  <div class="main-card__logo">
+    <img src="img/spletni-logo.png" alt="">
+  </div>
+  <div class="main-card__info">
+    <div class="main-card__header">Кафе "Сплетни"</div>
+    <div class="main-card__text">Средний чек 1200 рублей</div>
+  </div>
+</div>
+  <div class="main-card">
+  <img src="img/rediska.png" class="main-card__bg" alt="">
+  <div class="main-card__logo">
+    <img src="img/rediska-logo.png" alt="">
+  </div>
+  <div class="main-card__info">
+    <div class="main-card__header">Буфет "Редиска"</div>
+    <div class="main-card__text">Средний чек 500 рублей</div>
+  </div>
+</div>
+  <div class="main-card">
+  <img src="img/blackberry.png" class="main-card__bg" alt="">
+  <div class="main-card__logo">
+    <img src="img/blackberry-logo.png" alt="">
+  </div>
+  <div class="main-card__info">
+    <div class="main-card__header">BlackBerry</div>
+    <div class="main-card__text">Средний чек 1200 рублей</div>
+  </div>
+</div>
+  <div class="main-card">
+  <img src="img/redberry.png" class="main-card__bg" alt="">
+  <div class="main-card__logo">
+    <img src="img/redberry-logo.png" alt="">
+  </div>
+  <div class="main-card__info">
+    <div class="main-card__header">RedBerry</div>
+    <div class="main-card__text">Средний чек 1200 рублей</div>
+  </div>
+</div>
+  <div class="main-card">
+  <img src="img/broadway.png" class="main-card__bg" alt="">
+  <div class="main-card__logo">
+    <img src="img/broadway-logo.png" alt="">
+  </div>
+  <div class="main-card__info">
+    <div class="main-card__header">BroadWay</div>
+    <div class="main-card__text">Средний чек 900 рублей</div>
+  </div>
+</div>
+  <div class="main-card">
+  <img src="img/fastberry.png" class="main-card__bg" alt="">
+  <div class="main-card__logo">
+    <img src="img/fastberry-logo.png" alt="">
+  </div>
+  <div class="main-card__info">
+    <div class="main-card__header">Fast Berry</div>
+    <div class="main-card__text">Средний чек 1200 рублей</div>
+  </div>
+</div>
+  <div class="main-card">
+  <img src="img/minutka.png" class="main-card__bg" alt="">
+  <div class="main-card__logo">
+    <img src="img/minutka-logo.png" alt="">
+  </div>
+  <div class="main-card__info">
+    <div class="main-card__header">Бистро "Минутка"</div>
+    <div class="main-card__text">Средний чек 400 рублей</div>
+  </div>
+</div>
+  <div class="main-card">
+  <img src="img/tirex.png" class="main-card__bg" alt="">
+  <div class="main-card__logo">
+    <img src="img/tirex-logo.png" alt="">
+  </div>
+  <div class="main-card__info">
+    <div class="main-card__header">Кафе "Тирекс"</div>
+    <div class="main-card__text">Средний чек 1200 рублей</div>
+  </div>
+</div>
+</div>
+</div>
+<div class="app__item" id="restaurant">
+	<div class="rest-header" style="background-image:url('img/spletni.png');">
+  <div class="rest-header__bar">
+    <button class="rest-header__back icon icon--arrow-left back-frame"></button>
+    <button class="rest-header__bar-info icon icon--info" id="rest-info-activity" data-activity="#rest-info"></button>
+  </div>
+  <div class="rest-info__window" id="rest-info">
+  <div class="rest-info__window-bar">
+    <button class="rest-info__window-close icon icon--close" id="rest-info-unactivity" data-unactivity="#rest-info"></button>
+    <div class="rest-info__window-title">Информация</div>
+  </div>
+  <div class="rest-info__contact">
+    <div class="rest-info__contact-label">Телефон</div>
+    <div class="rest-info__contact-text">+7 (928) 720-720-0</div>
+  </div>
+  <div class="rest-info__contact">
+    <div class="rest-info__contact-label">Время работы</div>
+    <div class="rest-info__contact-text">11.00 - 00.00</div>
+  </div>
+  <div class="rest-info__contact">
+    <div class="rest-info__contact-label">Адрес</div>
+    <div class="rest-info__contact-text">г. Нальчик, ул. Кешокова, 77</div>
+  </div>
+</div>
+  <div class="rest-header__logo">
+    <img src="img/spletni-logo.png">
+  </div>
+  <div class="rest-header__info">
+    <div class="rest-header__title">Кафе "Сплетни"</div>
+    <div class="rest-header__stars">
+  <button class="rest-header__star active"></button>
+  <button class="rest-header__star active"></button>
+  <button class="rest-header__star active"></button>
+  <button class="rest-header__star active"></button>
+  <button class="rest-header__star"></button>
+</div>
+  </div>
+</div>
+	<div class="rest-grid">
+  <div class="rest-grid__item">
+    <div class="rest-grid__item-title">КУХНИ И БЛЮДА</div>
+    <div class="rest-grid__item-text">Итальянская, европейская, авторская</div>
+  </div>
+  <div class="rest-grid__item">
+    <div class="rest-grid__item-title">СРЕДНИЙ ЧЕК</div>
+    <div class="rest-grid__item-text">1200 рублей</div>
+  </div>
+  <div class="rest-grid__item">
+    <div class="rest-grid__item-title">ЗАКАЗАТЬ БАНКЕТ</div>
+    <div class="rest-grid__item-text">Online оформление заявки на проведение мероприятия</div>
+  </div>
+  <div class="rest-grid__item">
+    <div class="rest-grid__item-title">ОСТАВИТЬ ОТЗЫВ</div>
+    <div class="rest-grid__item-text">Поделись впечатлением</div>
+  </div>
+</div>
+	<div class="rest-button">
+		<button class="rest-button__element">ЗАБРОНИРОВАТЬ СТОЛИК</button>
+	</div>
+	<ul class="rest-list">
+  <li class="rest-list__item go-frame" data-frame="#foods">Завтраки</li>
+  <li class="rest-list__item">Кофе</li>
+  <li class="rest-list__item">Домашние лимонады</li>
+  <li class="rest-list__item">Коктейли безалкагольные</li>
+  <li class="rest-list__item">Пиво</li>
+</ul>
+</div>
+<div class="app__item" id="foods">
+  <div class="foods-header">
+  <button class="foods-header__back icon icon--arrow-left-gray back-frame"></button>
+  <div class="foods-header__title">Завтраки</div>
+</div>
+  <div class="foods" id="foods-container">
+  <div class="foods__item">
+  <img src="img/foods.png" alt="" class="foods__item-bg">
+  <div class="foods__item-title">Авокадо с креветками</div>
+  <div class="foods__item-text">Авокадо, тигровые креветки, лимон, помидоры, масло оливковое</div>
+  <div class="foods__item-form" data-price="420">
+    <div class="foods__item-form-price">420 руб</div>
+    <div class="foods__item-form-weight">200 г</div>
+    <div class="foods__item-form-button">ЗАКАЗАТЬ</div>
+    <div class="foods__item-form-order hidden">
+      <div class="foods__item-form-order-count">0 шт</div>
+      <button class="foods__item-form-order-button minus icon icon--minus"></button>
+      <button class="foods__item-form-order-button plus icon icon--plus"></button>
+    </div>
+  </div>
+</div>
+<div class="foods__item">
+  <img src="img/foods.png" alt="" class="foods__item-bg">
+  <div class="foods__item-title">Авокадо с креветками</div>
+  <div class="foods__item-text">Авокадо, тигровые креветки, лимон, помидоры, масло оливковое</div>
+  <div class="foods__item-form" data-price="420">
+    <div class="foods__item-form-price">420 руб</div>
+    <div class="foods__item-form-weight">200 г</div>
+    <div class="foods__item-form-button">ЗАКАЗАТЬ</div>
+    <div class="foods__item-form-order hidden">
+      <div class="foods__item-form-order-count">0 шт</div>
+      <button class="foods__item-form-order-button minus icon icon--minus"></button>
+      <button class="foods__item-form-order-button plus icon icon--plus"></button>
+    </div>
+  </div>
+</div>
+<div class="foods__item">
+  <img src="img/foods.png" alt="" class="foods__item-bg">
+  <div class="foods__item-title">Авокадо с креветками</div>
+  <div class="foods__item-text">Авокадо, тигровые креветки, лимон, помидоры, масло оливковое</div>
+  <div class="foods__item-form" data-price="420">
+    <div class="foods__item-form-price">420 руб</div>
+    <div class="foods__item-form-weight">200 г</div>
+    <div class="foods__item-form-button">ЗАКАЗАТЬ</div>
+    <div class="foods__item-form-order hidden">
+      <div class="foods__item-form-order-count">0 шт</div>
+      <button class="foods__item-form-order-button minus icon icon--minus"></button>
+      <button class="foods__item-form-order-button plus icon icon--plus"></button>
+    </div>
+  </div>
+</div>
+<div class="foods__item">
+  <img src="img/foods.png" alt="" class="foods__item-bg">
+  <div class="foods__item-title">Авокадо с креветками</div>
+  <div class="foods__item-text">Авокадо, тигровые креветки, лимон, помидоры, масло оливковое</div>
+  <div class="foods__item-form" data-price="420">
+    <div class="foods__item-form-price">420 руб</div>
+    <div class="foods__item-form-weight">200 г</div>
+    <div class="foods__item-form-button">ЗАКАЗАТЬ</div>
+    <div class="foods__item-form-order hidden">
+      <div class="foods__item-form-order-count">0 шт</div>
+      <button class="foods__item-form-order-button minus icon icon--minus"></button>
+      <button class="foods__item-form-order-button plus icon icon--plus"></button>
+    </div>
+  </div>
+</div>
+<div class="foods__item">
+  <img src="img/foods.png" alt="" class="foods__item-bg">
+  <div class="foods__item-title">Авокадо с креветками</div>
+  <div class="foods__item-text">Авокадо, тигровые креветки, лимон, помидоры, масло оливковое</div>
+  <div class="foods__item-form" data-price="420">
+    <div class="foods__item-form-price">420 руб</div>
+    <div class="foods__item-form-weight">200 г</div>
+    <div class="foods__item-form-button">ЗАКАЗАТЬ</div>
+    <div class="foods__item-form-order hidden">
+      <div class="foods__item-form-order-count">0 шт</div>
+      <button class="foods__item-form-order-button minus icon icon--minus"></button>
+      <button class="foods__item-form-order-button plus icon icon--plus"></button>
+    </div>
+  </div>
+</div>
+<div class="foods__item">
+  <img src="img/foods.png" alt="" class="foods__item-bg">
+  <div class="foods__item-title">Авокадо с креветками</div>
+  <div class="foods__item-text">Авокадо, тигровые креветки, лимон, помидоры, масло оливковое</div>
+  <div class="foods__item-form" data-price="420">
+    <div class="foods__item-form-price">420 руб</div>
+    <div class="foods__item-form-weight">200 г</div>
+    <div class="foods__item-form-button">ЗАКАЗАТЬ</div>
+    <div class="foods__item-form-order hidden">
+      <div class="foods__item-form-order-count">0 шт</div>
+      <button class="foods__item-form-order-button minus icon icon--minus"></button>
+      <button class="foods__item-form-order-button plus icon icon--plus"></button>
+    </div>
+  </div>
+</div>
+<div class="foods__item">
+  <img src="img/foods.png" alt="" class="foods__item-bg">
+  <div class="foods__item-title">Авокадо с креветками</div>
+  <div class="foods__item-text">Авокадо, тигровые креветки, лимон, помидоры, масло оливковое</div>
+  <div class="foods__item-form" data-price="420">
+    <div class="foods__item-form-price">420 руб</div>
+    <div class="foods__item-form-weight">200 г</div>
+    <div class="foods__item-form-button">ЗАКАЗАТЬ</div>
+    <div class="foods__item-form-order hidden">
+      <div class="foods__item-form-order-count">0 шт</div>
+      <button class="foods__item-form-order-button minus icon icon--minus"></button>
+      <button class="foods__item-form-order-button plus icon icon--plus"></button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div class="app__item" id="basket">
+  <div class="foods-header">
+  <button class="foods-header__back icon icon--arrow-left-gray back-frame"></button>
+  <div class="foods-header__title">Корзина</div>
+</div>
+  <div class="basket-logo">
+  <img src="img/spletni-logo-large.png" alt="" class="basket-logo__img">
+</div>
+  <div class="basket-order">
+  <img src="img/order-basket.png" alt="" class="basket-order__img">
+  <div class="basket-order__info">
+    <div class="basket-order__title">
+      Авокадо с креветками
+      <span>200 г</span>
+    </div>
+    <div class="basket-order__items">
+      <div class="basket-order__item">
+        <span>Количество</span>
+        <span>2 шт</span>
+      </div>
+      <div class="basket-order__item">
+        <span>Цена</span>
+        <span>840 руб.</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="basket-order">
+  <img src="img/order-basket.png" alt="" class="basket-order__img">
+  <div class="basket-order__info">
+    <div class="basket-order__title">
+      Авокадо с креветками
+      <span>200 г</span>
+    </div>
+    <div class="basket-order__items">
+      <div class="basket-order__item">
+        <span>Количество</span>
+        <span>2 шт</span>
+      </div>
+      <div class="basket-order__item">
+        <span>Цена</span>
+        <span>840 руб.</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="basket-calc">
+  <div class="basket-calc__item">
+    <span>Сумма</span>
+    <span>1680 руб</span>
+  </div>
+  <div class="basket-calc__item">
+    <span>Доставка</span>
+    <span>бесплатно</span>
+  </div>
+</div>
+<div class="basket-order-bar">
+  <div class="basket-order-bar__info">
+    <span>Итого:</span>
+    <span>1680 руб.</span>
+  </div>
+  <button class="basket-order-bar__button go-frame" data-frame="#basket-getup">Оформить заказ</button>
+</div>
+</div>
+<div class="app__item" id="basket-getup">
+  <div class="foods-header">
+  <button class="foods-header__back icon icon--arrow-left-gray back-frame"></button>
+  <div class="foods-header__title">Оформление заказа</div>
+</div>
+  <div class="basket-getup-form">
+  <div class="basket-getup-form__title">Как с вами связаться?</div>
+  <div class="basket-getup-form__group-field">
+    <input type="text" class="basket-getup-form__field" placeholder="Телефон">
+  </div>
+  <div class="basket-getup-form__group-field">
+    <input type="text" class="basket-getup-form__field" placeholder="Имя *">
+  </div>
+</div>
+  <div class="basket-getup-delivery">
+  <div class="basket-getup-delivery__title">Доставка</div>
+  <div class="basket-getup-delivery__subtitle">При стоимости заказа от 1000 рублей - доставка курьером бесплатно.</div>
+  <div class="basket-getup-delivery__list">
+  <div class="basket-getup-delivery__item">
+    <label class="basket-getup-delivery__radio basket-getup-delivery__radio--checked">
+      <input type="radio" name="type-delivery" checked>
+      <span class="basket-getup-delivery__radio-title">Доставка курьером (100 руб)</span>
+    </label>
+  </div>
+  <div class="basket-getup-delivery__item">
+    <label class="basket-getup-delivery__radio">
+      <input type="radio" name="type-delivery">
+      <span class="basket-getup-delivery__radio-title">Самовывоз (Бесплатно)</span>
+    </label>
+  </div>
+</div>
+  <div class="basket-getup-form__group-field basket-getup-form__group-field--border">
+    <input type="text" class="basket-getup-form__field" placeholder="Адрес доставки*">
+  </div>
+</div>
+  <div class="basket-calc">
+  <div class="basket-calc__item">
+    <span>Сумма</span>
+    <span>1680 руб</span>
+  </div>
+  <div class="basket-calc__item">
+    <span>Доставка</span>
+    <span>бесплатно</span>
+  </div>
+</div>
+    <div class="basket-order-bar">
+  <div class="basket-order-bar__info">
+    <span>Итого:</span>
+    <span>1680 руб.</span>
+  </div>
+  <button class="basket-order-bar__button go-frame">Заказать</button>
+</div>
+</div>
+  </div>
+</div>
+  </body>
 </html>
+<script src="build/index.js"></script>
+<script src="build/jquery.min.js"></script>
+<script src="build/js/build.js"></script>
