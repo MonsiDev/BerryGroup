@@ -49,10 +49,6 @@ var Core = (function() {
 
 Core.init();
 
-$(".main-nav__item").on("click", function(_e) {
-  $("#main_nav").removeClass("active");
-  $('body').removeClass("on-shadow");
-});
 
 var cFoods = {
   __const: {
@@ -109,7 +105,8 @@ var cFoods = {
       $(this.formButtons[i]).on("touchstart", this.orderPush.bind(bindData));
     }
   }
-}.init($("#foods-container"));
+};
+Foods.init($("#foods-container"));
 
 function animate(duration, func_end_anim) {
   var start = performance.now();
@@ -126,7 +123,7 @@ function animate(duration, func_end_anim) {
   });
 }
 
-(function() {
+var Radio = (function() {
   "use strict";
   return {
     init: function($_) {
@@ -150,15 +147,21 @@ function animate(duration, func_end_anim) {
 
     onUpdate: function(_e) {
       var radio = $(".basket-getup-delivery__radio input[type=radio]");
-      $(radio).parent().removeClass("basket-getup-delivery__radio--checked");
+      $(radio)
+        .parent()
+        .removeClass("basket-getup-delivery__radio--checked");
       for (var i = 0; i < radio.length; i++) {
         if ($(radio[i]).is(":checked")) {
-          $(radio[i]).parent().addClass("basket-getup-delivery__radio--checked");
+          $(radio[i])
+            .parent()
+            .addClass("basket-getup-delivery__radio--checked");
         }
       }
     }
   };
-})().init($(".basket-getup-delivery__radio"));
+})();
+
+Radio.init($(".basket-getup-delivery__radio"));
 
 var View = (function() {
   "use strict";
