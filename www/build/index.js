@@ -28,6 +28,8 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+        Core.init();
+        View.init();
     },
 
     // Update DOM on a Received Event

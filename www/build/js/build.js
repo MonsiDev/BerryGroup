@@ -1,4 +1,4 @@
-(function() {
+var Core = (function() {
   "use strict";
   return {
     init: function() {
@@ -45,7 +45,9 @@
       });
     }
   };
-})().init();
+})();
+
+Core.init();
 
 $(".main-nav__item").on("click", function(_e) {
   $("#main_nav").removeClass("active");
@@ -158,7 +160,7 @@ function animate(duration, func_end_anim) {
   };
 })().init($(".basket-getup-delivery__radio"));
 
-(function() {
+var View = (function() {
   "use strict";
   return {
     screen_launch: function() {
@@ -227,4 +229,6 @@ function animate(duration, func_end_anim) {
       this.stars_init($(".rest-header__star"));
     }
   };
-})().init();
+})();
+
+View.init();
