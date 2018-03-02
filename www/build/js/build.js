@@ -106,7 +106,7 @@ var cFoods = {
     }
   }
 };
-Foods.init($("#foods-container"));
+cFoods.init($("#foods-container"));
 
 function animate(duration, func_end_anim) {
   var start = performance.now();
