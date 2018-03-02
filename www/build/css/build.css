@@ -471,6 +471,9 @@ body.on-shadow::before {
   outline: none;
   padding: 15px; }
 
+.rest-list {
+  margin-top: 30px; }
+
 .rest-list__item {
   position: relative;
   display: block;
