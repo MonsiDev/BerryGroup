@@ -1,3 +1,45 @@
+// var ajax = {
+// 	init: function(){
+// 		return new XMLHttpRequest();
+// 		},
+// 	send: function(url,method,args,cookies,async,_callback){
+// 		var q=ajax.init();
+// 		q.open(method,url,async);
+// 		q.onreadystatechange=function(){
+// 				if(this.readyState==4 && this.status==200) {
+// 					_callback(this.responseText);
+// 				}
+// 			};
+// 		if (cookies) {
+// 			q.setRequestHeader('Cookie',cookies);
+// 		}
+// 		if(method=='POST') {
+// 			q.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+// 			q.send(args);
+// 		} else {
+// 			q.send(null);
+// 		}
+// 	}
+// }
+//
+// ajax.init();
+// ajax.send('https://google.ru', 'POST', null, null, false, function(args) {
+//   console.log(args);
+// });
+
+var Basket = {
+  goods: {},
+  total: 0,
+  delivery: false,
+  init: function() {},
+  add: function(id, name, title, weight, price) {},
+  remove: function() {},
+  totalCalc: function() {},
+  reset: function() {
+    this.goods = {};
+  }
+};
+
 var Core = (function() {
   "use strict";
   return {
@@ -122,6 +164,30 @@ function animate(duration, func_end_anim) {
     }
   });
 }
+
+(function() {
+  "use strict";
+  var restList = document.querySelector('.app__item #rest-list');
+  var cNet = {
+    init: function() {
+      $.ajax({
+        type: "POST",
+        url: "http://bberry.ru/mobidix/category",
+        success: function(json) {
+          json.forEach(function(each) {
+            console.log(restList);
+            var restLi = document.createElement("LI");
+            restLi.classList.add("rest-list__item", "go-frame");
+            restLi.setAttribute("data-frame", "#foods");
+            restLi.innerHTML = each["name"];
+            restList.appendChild(restLi);
+          });
+        }
+      });
+    }
+  };
+  cNet.init();
+})();
 
 var Radio = (function() {
   "use strict";

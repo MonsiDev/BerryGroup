@@ -32,6 +32,8 @@ var app = {
   // 'pause', 'resume', etc.
   onDeviceReady: function() {
     this.receivedEvent("deviceready");
+    cNet.init();
+    Basket.init();
     Core.init();
     View.init();
     $(".main-nav__item").on("click", function(_e) {
