@@ -1,7 +1,7 @@
 <div class="basket-order-bar">
-  <div class="basket-order-bar__info">
+  <div class="basket-order-bar__info basket-total">
     <span>Итого:</span>
     <span>1680 руб.</span>
   </div>
-  <button class="basket-order-bar__button go-frame">Заказать</button>
+  <button class="basket-order-bar__button go-frame" id="delivery-send">Заказать</button>
 </div>

@@ -1,4 +1,4 @@
-<div class="main-card">
+<div class="main-card go-frame" data-frame="#restaurant" data-rest-url="//xn--80aacqpbogq2aainz0d8d.xn--p1ai">
   <img src="img/fastberry.png" class="main-card__bg" alt="">
   <div class="main-card__logo">
     <img src="img/fastberry-logo.png" alt="">

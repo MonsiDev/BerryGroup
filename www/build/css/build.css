@@ -168,7 +168,7 @@ body.on-shadow::before {
   top: 0;
   left: -364px;
   height: 100vh;
-  width: 364px;
+  width: 87.923%;
   background-color: #fff;
   z-index: 4;
   transition: left 0.23s; }
@@ -690,7 +690,8 @@ body.on-shadow::before {
 
 .basket-calc {
   padding: 15px 0;
-  border-bottom: 1px solid #f4f4f4; }
+  border-bottom: 1px solid #f4f4f4;
+  margin-bottom: 7px; }
 
 .basket-calc__item {
   display: flex;
@@ -708,12 +709,14 @@ body.on-shadow::before {
   color: #b3b3b3; }
 
 .basket-order-bar {
-  position: absolute;
+  position: sticky;
+  top: 0;
   bottom: 0;
   left: 0;
   height: 112px;
   width: 100%;
-  background-color: #fff; }
+  background-color: #fff;
+  z-index: 99; }
 
 .basket-order-bar__info {
   display: flex;
@@ -760,6 +763,10 @@ body.on-shadow::before {
 
 .basket-getup-form__field:focus {
   border-color: #454442; }
+
+.basket-getup-form__field-no-valid:focus,
+.basket-getup-form__field-no-valid {
+  border-color: #ff3333; }
 
 .basket-getup-form__field::placeholder {
   color: #b3b3b3;

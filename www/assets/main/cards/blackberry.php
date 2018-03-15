@@ -1,4 +1,4 @@
-<div class="main-card">
+<div class="main-card go-frame" data-frame="#restaurant" data-rest-url="//xn--80abaqpbjfcfu8aa6h6cg.xn--p1ai">
   <img src="img/blackberry.png" class="main-card__bg" alt="">
   <div class="main-card__logo">
     <img src="img/blackberry-logo.png" alt="">
