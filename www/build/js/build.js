@@ -119,74 +119,64 @@ var Basket = {
     $("#basket-orders").append(item);
   },
   sendDelivery: function() {
-    var formValid = [
-      $("#delivery-phone"),
-      $("#delivery-name"),
-      $("#delivery-address")
-    ];
-    formValid.forEach(function(each) {
-      if (each.val() == "") {
-        each.addClass("basket-getup-form__field-no-valid");
-      } else {
-        each.removeClass("basket-getup-form__field-no-valid");
-      }
-    });
-    if (
-      formValid[0].val() != "" ||
-      formValid[1].val() != "" ||
-      formValid[0].val() != ""
-    ) {
-      var delSend = Array();
-      for (var key in this.goods) {
-        if (this.goods[key] !== undefined) {
-          delSend.push({
-            title: this.goods[key]["title"],
-            weight: this.goods[key]["weight"],
-            imgUrl: this.goods[key]["imgUrl"],
-            price: this.goods[key]["price"],
-            count: this.goods[key]["count"]
-          });
+    if (Basket.goods.length != 0) {
+      var formValid = [
+        $("#delivery-phone"),
+        $("#delivery-name"),
+        $("#delivery-address")
+      ];
+      formValid.forEach(function(each) {
+        if (each.val() == "") {
+          each.addClass("basket-getup-form__field-no-valid");
+        } else {
+          each.removeClass("basket-getup-form__field-no-valid");
         }
-      }
-      minXDM.go(
-        'POST',
-        'send',
-        {
-          total: this.total,
-          goods: delSend,
-          delivery: this.delivery,
-          name: $("#delivery-name").val(),
-          phone: $("#delivery-phone").val(),
-          address: $("#delivery-address").val()
-        },
-        function(_e) {
-          var json = _e.data;
-          if(json['status'] == 'OK') {
-            $("#basket-orders").html("");
-            Basket.goods = [];
-            Basket.total = 0;
+      });
+      if (
+        formValid[0].val() != "" &&
+        formValid[1].val() != "" &&
+        formValid[0].val() != ""
+      ) {
+        $("#send-del-load-screen").css("display", "flex");
+        var delSend = Array();
+        for (var key in this.goods) {
+          if (this.goods[key] !== undefined) {
+            delSend.push({
+              title: this.goods[key]["title"],
+              weight: this.goods[key]["weight"],
+              imgUrl: this.goods[key]["imgUrl"],
+              price: this.goods[key]["price"],
+              count: this.goods[key]["count"]
+            });
           }
         }
-      );
-      /* $.ajax({
-        type: "POST",
-        url: Core.restUrl + "/mobidix/send",
-        data: {
-          total: this.total,
-          goods: delSend,
-          delivery: this.delivery,
-          name: $("#delivery-name").val(),
-          phone: $("#delivery-phone").val(),
-          address: $("#delivery-address").val()
-        },
-        success: function(json) {
-          if(json['status'] == 'OK') {
-            $("#basket-orders").html("");
-            Basket.goods = [];
-            Basket.total = 0;
+        minXDM.go(
+          "POST",
+          "send",
+          {
+            total: this.total,
+            goods: delSend,
+            delivery: this.delivery,
+            name: $("#delivery-name").val(),
+            phone: $("#delivery-phone").val(),
+            address: $("#delivery-address").val()
+          },
+          function(_e) {
+            var json = _e.data;
+            if (json["status"] == "OK") {
+              $("#basket-orders").html("");
+              Basket.goods = [];
+              Basket.total = 0;
+              $("#send-del-load-screen").text("Отправлено");
+              $("#send-del-load-screen").addClass("none");
+              animate(3000, function() {
+                $("#send-del-load-screen").css("display", "");
+                Basket.goBasket();
+              });
+            }
           }
-        }
-      });*/
+        );
+      }
     }
   }
 };
@@ -199,9 +189,9 @@ var Core = (function() {
       this.refererFrame = Array();
       this.appContainer = $("#app");
       this.appList = $("#app-list");
-      this.restIframe = '';
+      this.restIframe = "";
       this.initFrames();
-      $('#delivery-send').on('touchstart', function(_e){
+      $("#delivery-send").on("touchstart", function(_e) {
         Basket.sendDelivery();
       });
     },
@@ -220,43 +210,54 @@ var Core = (function() {
       this.backFrame();
     },
     backFrame: function() {
-      var __this = this;
-      if (__this.refererFrame) {
-        $(".back-frame").on("click", function(_e) {
-          var goFrame = __this.refererFrame.pop();
-          __this.frame = goFrame;
-          __this.appList.css("left", -parseInt(goFrame.css("left")));
+      var Core = this;
+      if (Core.refererFrame) {
+        $(".back-frame").on("touchend", function(_e) {
+          var goFrame = Core.refererFrame.pop();
+          Core.frame = goFrame;
+          Core.appList.css("left", -parseInt(goFrame.css("left")));
         });
       }
     },
     goFrame: function() {
-      var __this = this;
-      $(".go-frame").on("click", function(_e) {
-        if($(this).parent().hasClass('main-nav')) {
-          $(this).parent().removeClass('active');
-          $('body').removeClass('on-shadow');
+      $(".go-frame").on("touchend", Core.onEventGo);
+    },
+    onEventGo: function(_e) {
+      if (
+        $(this)
+          .parent()
+          .hasClass("main-nav")
+      ) {
+        $(this)
+          .parent()
+          .removeClass("active");
+        $("body").removeClass("on-shadow");
+      }
+      var $frame = $($(this).data("frame"));
+      if ($frame) {
+        Core.refererFrame.push(Core.frame);
+        Core.frame = $frame;
+        if ($(this).hasClass("go-basket")) {
+          Basket.goBasket();
         }
-        var $frame = $($(this).data("frame"));
-        if ($frame) {
-          __this.refererFrame.push(__this.frame);
-          __this.frame = $frame;
-          if($(this).hasClass('go-basket')) {
-            Basket.goBasket();
-          }
-          if($(this).data('iframe')) {
-            __this.restUrl = $(this).data('url');
-            __this.restIframe = document.getElementById($(this).data('iframe'));
-            cNet.restSetting();
-            cNet.restCategory();
-          }
-          if($(this).data('rest-category') && $(this).data('rest-category') != __this.restCategory) {
-            __this.restCategory = $(this).data('rest-category');
-            cNet.restFoods();
-          }
-          __this.appList.css("left", -parseInt($frame.css("left")));
+        if ($(this).data("iframe")) {
+          Core.restUrl = $(this).data("url");
+          Core.restIframe = document.getElementById($(this).data("iframe"));
+          $('#rest-header-bg').css('background-image', "url(" + $($(this).find('.main-card__bg')[0]).attr('src') + ")");
+          $('#rest-header-logo').attr('src', $( $(this).find('.main-card__logo img')[0] ).attr('src') );
+          $('#rest-header-title').html($( $(this).find('.main-card__header')[0] ).html());
+          cNet.restCategory();
         }
-        return false;
-      });
+        if (
+          $(this).data("rest-category") &&
+          $(this).data("rest-category") != Core.restCategory
+        ) {
+          Core.restCategory = $(this).data("rest-category");
+          cNet.restFoods();
+        }
+        Core.appList.css("left", -parseInt(Core.frame.css("left")));
+      }
+      return false;
     }
   };
 })();
@@ -382,16 +383,15 @@ function animate(duration, func_end_anim) {
 
 var cNet = {
   restSetting: function() {
-    // $.ajax({
-    //   type: "POST",
-    //   url: Core.restUrl + "/mobidix/setting",
-    //   success: function(json) {
-    //     $('#sett-info-sched').show();
-    //     $('#sett-info-phone .rest-info__contact-text').text(json['phone']);
-    //     $('#sett-info-sched .rest-info__contact-text').text(json['schedule'] || $('#sett-info-sched').hide());
-    //     $('#sett-info-address .rest-info__contact-text').text(json['address']);
-    //   }
-    // });
+    minXDM.go("GET", "setting", "", function(_e) {
+      var json = _e.data;
+      $("#sett-info-sched").show();
+      $("#sett-info-phone .rest-info__contact-text").html(json["phone"]);
+      $("#sett-info-sched .rest-info__contact-text").html(
+        json["schedule"] || $("#sett-info-sched").hide()
+      );
+      $("#sett-info-address .rest-info__contact-text").html(json["address"]);
+    });
   },
   addGood: function(title, imgUrl, desc, price, weight, url) {
     var item = document.createElement("DIV");
@@ -439,9 +439,10 @@ var cNet = {
     } else {
       item_form_order.classList.remove("hidden");
       item_form_button.classList.add("hidden");
-      item_form_order_count.innerHTML = Basket.goods[
-        Core.restUrl.replace(/(\/\/|\:)/gi, "").replace(/\./, "-") + "-" + url
-      ]['count'] + " шт";
+      item_form_order_count.innerHTML =
+        Basket.goods[
+          Core.restUrl.replace(/(\/\/|\:)/gi, "").replace(/\./, "-") + "-" + url
+        ]["count"] + " шт";
     }
     item_form_order_count.classList.add("foods__item-form-order-count");
     item_form_order_btnMinus.classList.add(
@@ -473,73 +474,41 @@ var cNet = {
     return item;
   },
   restFoods: function() {
-    minXDM.go(
-      'GET',
-      'goods?id=' + Core.restCategory,
-      "",
-      function(_e) {
-        var json = _e.data;
-        if (json["code"] != 1753) {
-          $("#foods-container").html("");
-          json.forEach(function(each) {
-            $("#foods-container").append(
-              cNet.addGood(
-                each["name"],
-                each["path"],
-                each["desc_full"],
-                each["price"],
-                200,
-                each["url"]
-              )
-            );
-          });
-          cFoods.init($("#foods-container"));
-        }
+    minXDM.go("GET", "goods?id=" + Core.restCategory, "", function(_e) {
+      var json = _e.data;
+      if (json["code"] != 1753) {
+        $("#foods-container").html("");
+        json.forEach(function(each) {
+          $("#foods-container").append(
+            cNet.addGood(
+              each["name"],
+              each["path"],
+              each["desc_full"],
+              each["price"],
+              200,
+              each["url"]
+            )
+          );
+        });
+        cFoods.init($("#foods-container"));
       }
-    );
-
-    // $.ajax({
-    //   type: "POST",
-    //   url: Core.restUrl + "/mobidix/goods?id=" + Core.restCategory,
-    //   success: function(json) {
-    //     if (json["code"] != 1753) {
-    //       $("#foods-container").html("");
-    //       json.forEach(function(each) {
-    //         $("#foods-container").append(
-    //           cNet.addGood(
-    //             each["name"],
-    //             each["path"],
-    //             each["desc_full"],
-    //             each["price"],
-    //             200,
-    //             each["url"]
-    //           )
-    //         );
-    //       });
-    //       cFoods.init($("#foods-container"));
-    //     }
-    //   }
-    // });
+    });
   },
   restCategory: function() {
-    minXDM.go(
-      'GET',
-      'category',
-      "",
-      function(_e) {
-        $("#rest-list").html("");
-        var json = _e.data;
-        json.forEach(function(each) {
-          var restLi = document.createElement("LI");
-          restLi.classList.add("rest-list__item", "go-frame");
-          restLi.setAttribute("data-frame", "#foods");
-          restLi.setAttribute("data-rest-category", each["id"]);
-          restLi.innerHTML = each["name"];
-          $("#rest-list").append(restLi);
-        });
-        Core.goFrame();
-      }
-    );
+    minXDM.go("GET", "category", "", function(_e) {
+      $("#rest-list").html("");
+      var json = _e.data;
+      json.forEach(function(each) {
+        var restLi = document.createElement("LI");
+        restLi.classList.add("rest-list__item", "go-frame");
+        restLi.setAttribute("data-frame", "#foods");
+        restLi.setAttribute("data-rest-category", each["id"]);
+        restLi.innerHTML = each["name"];
+        $(restLi).on("touchend", Core.onEventGo);
+        $("#rest-list").append(restLi);
+      });
+      cNet.restSetting();
+    });
   }
 };
 
@@ -589,13 +558,11 @@ var View = (function() {
   "use strict";
   return {
     screen_launch: function() {
-      animate(1000, function() {
-        if ($("#launch_screen")) {
-          $("#launch_screen").addClass("launch-screen--transparent");
-          animate(1000, function() {
-            $("#launch_screen").css("visibility", "hidden");
-          });
-        }
+      window.addEventListener('load', function(_e) {
+        $("#launch_screen").addClass("launch-screen--transparent");
+        animate(1000, function() {
+          $("#launch_screen").css("visibility", "hidden");
+        });
       });
     },
     activity_init: function($_, unactivity, onShadow = false) {

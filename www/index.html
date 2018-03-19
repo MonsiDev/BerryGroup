@@ -146,7 +146,7 @@
 </div>
 </div>
 <div class="app__item" id="restaurant">
-	<div class="rest-header" style="background-image:url('img/spletni.png');">
+	<div class="rest-header" style="background-image:url('img/spletni.png');" id="rest-header-bg">
   <div class="rest-header__bar">
     <button class="rest-header__back icon icon--arrow-left back-frame"></button>
     <button class="rest-header__bar-info icon icon--info" id="rest-info-activity" data-activity="#rest-info"></button>
@@ -170,10 +170,10 @@
   </div>
 </div>
   <div class="rest-header__logo">
-    <img src="img/spletni-logo.png">
+    <img src="img/spletni-logo.png" id="rest-header-logo">
   </div>
   <div class="rest-header__info">
-    <div class="rest-header__title">Кафе "Сплетни"</div>
+    <div class="rest-header__title" id="rest-header-title">Кафе "Сплетни"</div>
     <div class="rest-header__stars">
   <button class="rest-header__star active"></button>
   <button class="rest-header__star active"></button>
@@ -283,6 +283,9 @@
   <div class="foods-header">
   <button class="foods-header__back icon icon--arrow-left-gray back-frame"></button>
   <div class="foods-header__title">Оформление заказа</div>
+</div>
+<div id="send-del-load-screen">
+  Отправляется заявка...
 </div>
   <div class="basket-getup-form">
   <div class="basket-getup-form__title">Как с вами связаться?</div>
