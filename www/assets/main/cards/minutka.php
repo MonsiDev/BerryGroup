@@ -1,4 +1,4 @@
-<div class="main-card go-frame" data-frame="#restaurant" data-rest-url="//минутканальчик.рф">
+<div class="main-card go-frame" data-frame="#restaurant" data-url="http://xn--80aawchdfdkc6cl2dvd.xn--p1ai/" data-iframe="minutka-rest">
   <img src="img/minutka.png" class="main-card__bg" alt="">
   <div class="main-card__logo">
     <img src="img/minutka-logo.png" alt="">
@@ -8,3 +8,4 @@
     <div class="main-card__text">Средний чек 400 рублей</div>
   </div>
 </div>
+<iframe src="http://xn--80aawchdfdkc6cl2dvd.xn--p1ai/mobidix/proxy" id="minutka-rest" style="display:none" width=0 height=0 hidden></iframe>

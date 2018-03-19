@@ -179,7 +179,7 @@ var Core = (function() {
       this.refererFrame = Array();
       this.appContainer = $("#app");
       this.appList = $("#app-list");
-      this.restUrl = '';
+      this.restIframe = '';
       this.initFrames();
       $('#delivery-send').on('touchstart', function(_e){
         Basket.sendDelivery();
@@ -223,8 +223,9 @@ var Core = (function() {
           if($(this).hasClass('go-basket')) {
             Basket.goBasket();
           }
-          if($(this).data('rest-url')) {
-            __this.restUrl = $(this).data('rest-url');
+          if($(this).data('iframe')) {
+            __this.restUrl = $(this).data('url');
+            __this.restIframe = document.getElementById($(this).data('iframe'));
             cNet.restSetting();
             cNet.restCategory();
           }
@@ -361,16 +362,16 @@ function animate(duration, func_end_anim) {
 
 var cNet = {
   restSetting: function() {
-    $.ajax({
-      type: "POST",
-      url: Core.restUrl + "/mobidix/setting",
-      success: function(json) {
-        $('#sett-info-sched').show();
-        $('#sett-info-phone .rest-info__contact-text').text(json['phone']);
-        $('#sett-info-sched .rest-info__contact-text').text(json['schedule'] || $('#sett-info-sched').hide());
-        $('#sett-info-address .rest-info__contact-text').text(json['address']);
-      }
-    });
+    // $.ajax({
+    //   type: "POST",
+    //   url: Core.restUrl + "/mobidix/setting",
+    //   success: function(json) {
+    //     $('#sett-info-sched').show();
+    //     $('#sett-info-phone .rest-info__contact-text').text(json['phone']);
+    //     $('#sett-info-sched .rest-info__contact-text').text(json['schedule'] || $('#sett-info-sched').hide());
+    //     $('#sett-info-address .rest-info__contact-text').text(json['address']);
+    //   }
+    // });
   },
   addGood: function(title, imgUrl, desc, price, weight, url) {
     var item = document.createElement("DIV");
@@ -452,10 +453,12 @@ var cNet = {
     return item;
   },
   restFoods: function() {
-    $.ajax({
-      type: "POST",
-      url: Core.restUrl + "/mobidix/goods?id=" + Core.restCategory,
-      success: function(json) {
+    minXDM.go(
+      'GET',
+      'goods?id=' + Core.restCategory,
+      "",
+      function(_e) {
+        var json = _e.data;
         if (json["code"] != 1753) {
           $("#foods-container").html("");
           json.forEach(function(each) {
@@ -473,14 +476,39 @@ var cNet = {
           cFoods.init($("#foods-container"));
         }
       }
-    });
+    );
+
+    // $.ajax({
+    //   type: "POST",
+    //   url: Core.restUrl + "/mobidix/goods?id=" + Core.restCategory,
+    //   success: function(json) {
+    //     if (json["code"] != 1753) {
+    //       $("#foods-container").html("");
+    //       json.forEach(function(each) {
+    //         $("#foods-container").append(
+    //           cNet.addGood(
+    //             each["name"],
+    //             each["path"],
+    //             each["desc_full"],
+    //             each["price"],
+    //             200,
+    //             each["url"]
+    //           )
+    //         );
+    //       });
+    //       cFoods.init($("#foods-container"));
+    //     }
+    //   }
+    // });
   },
   restCategory: function() {
-    $.ajax({
-      type: "POST",
-      url: Core.restUrl + "/mobidix/category",
-      success: function(json) {
+    minXDM.go(
+      'GET',
+      'category',
+      "",
+      function(_e) {
         $("#rest-list").html("");
+        var json = _e.data;
         json.forEach(function(each) {
           var restLi = document.createElement("LI");
           restLi.classList.add("rest-list__item", "go-frame");
@@ -491,7 +519,7 @@ var cNet = {
         });
         Core.goFrame();
       }
-    });
+    );
   }
 };
 
@@ -612,11 +640,32 @@ View.init();
 
 (function() {
   "use strict";
-  window.addEventListener("load", function(_e) {
-    var iframe = document.createElement('IFRAME');
-    iframe.src = "";
-    document.body.appendChild(iframe);
-    iframe.contentWindow.location.href = "http://xn--80aawchdfdkc6cl2dvd.xn--p1ai/mobidix/category";
-    console.log(iframe);
-  });
+  var minXDM = {
+    response: function() {},
+    go: function(
+      _method = "GET",
+      uri = "category",
+      data = {},
+      _response
+    ) {
+      this.win = Core.restIframe.contentWindow;
+      this.response = _response;
+      this.win.postMessage(
+        {
+          method: "GET",
+          param: uri
+        },
+        "*"
+      );
+    }
+  };
+  function listener(_e) {
+    minXDM.response(_e);
+  }
+  if (window.addEventListener) {
+    window.addEventListener("message", listener, false);
+  } else {
+    window.attachEvent("onmessage", listener);
+  }
+  window["minXDM"] = minXDM;
 })();
