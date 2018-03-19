@@ -148,7 +148,27 @@ var Basket = {
           });
         }
       }
-      $.ajax({
+      minXDM.go(
+        'POST',
+        'send',
+        {
+          total: this.total,
+          goods: delSend,
+          delivery: this.delivery,
+          name: $("#delivery-name").val(),
+          phone: $("#delivery-phone").val(),
+          address: $("#delivery-address").val()
+        },
+        function(_e) {
+          var json = _e.data;
+          if(json['status'] == 'OK') {
+            $("#basket-orders").html("");
+            Basket.goods = [];
+            Basket.total = 0;
+          }
+        }
+      );
+      /* $.ajax({
         type: "POST",
         url: Core.restUrl + "/mobidix/send",
         data: {
@@ -166,7 +186,7 @@ var Basket = {
             Basket.total = 0;
           }
         }
-      });
+      });*/
     }
   }
 };
@@ -645,15 +665,16 @@ View.init();
     go: function(
       _method = "GET",
       uri = "category",
-      data = {},
+      _data = {},
       _response
     ) {
       this.win = Core.restIframe.contentWindow;
       this.response = _response;
       this.win.postMessage(
         {
-          method: "GET",
-          param: uri
+          method: _method,
+          param: uri,
+          data: _data
         },
         "*"
       );
