@@ -25,9 +25,23 @@ var ajax = {
 var Basket = {
   goods: {},
   total: 0,
+  total_: 0,
+  count_: 0,
   delivery: true,
-  init: function() {},
+  init: function() {
+    $(".fixed").css(
+      "left",
+      parseInt(
+        $(this)
+          .parent()
+          .css("left")
+      )
+    );
+  },
   add: function(name_, title_, imgUrl_, price_, weight_) {
+    this.total_ += price_;
+    this.count_++;
+    this.viewRefresh();
     if (this.goods[name_] === undefined) {
       this.goods[name_] = {
         title: title_,
@@ -41,10 +55,22 @@ var Basket = {
     }
   },
   remove: function(name_) {
+    this.total_ -= this.goods[name_]["price"];
+    this.count_--;
+    this.viewRefresh();
     this.goods[name_]["count"]--;
     if (this.goods[name_]["count"] == 0) {
       this.goods[name_] = undefined;
     }
+  },
+  viewRefresh: function() {
+    if(this.total_ > 0){
+      $('#basket-fixed').removeClass('basket-fixed--hidden');
+    } else {
+      $('#basket-fixed').addClass('basket-fixed--hidden');
+    }
+    $('#basket-bar-fixed-price').text(this.total_);
+    $('#basket-bar-fixed-count').text(this.count_);
   },
   goBasket: function() {
     $("#basket-orders").html("");
@@ -181,6 +207,8 @@ var Basket = {
   }
 };
 
+Basket.init();
+
 var Core = (function() {
   "use strict";
   return {
@@ -191,7 +219,7 @@ var Core = (function() {
       this.appList = $("#app-list");
       this.restIframe = "";
       this.initFrames();
-      $("#delivery-send").on("touchstart", function(_e) {
+      $("#delivery-send").on("click", function(_e) {
         Basket.sendDelivery();
       });
     },
@@ -212,7 +240,7 @@ var Core = (function() {
     backFrame: function() {
       var Core = this;
       if (Core.refererFrame) {
-        $(".back-frame").on("touchend", function(_e) {
+        $(".back-frame").on("click", function(_e) {
           var goFrame = Core.refererFrame.pop();
           Core.frame = goFrame;
           Core.appList.css("left", -parseInt(goFrame.css("left")));
@@ -220,7 +248,7 @@ var Core = (function() {
       }
     },
     goFrame: function() {
-      $(".go-frame").on("touchend", Core.onEventGo);
+      $(".go-frame").on("click", Core.onEventGo);
     },
     onEventGo: function(_e) {
       if (
@@ -553,6 +581,36 @@ var Radio = (function() {
 })();
 
 Radio.init($(".basket-getup-delivery__radio"));
+
+(function() {
+  "use strict";
+  var jsSlider = {
+    init: function(element) {
+      this.element_ = element;
+      this.childs_ = element.find('.main-slider__item');
+      this.list_ = element.find('.main-slider__list');
+      this.list_.css('width', element.width() * this.childs_.length + 'px');
+      for(var i = 0; i < this.childs_.length; i++) {
+        var child = $(this.childs_[i]);
+        child.css('left', (child.width() + 15) * i + 'px');
+      }
+      jsSlider.timeEnd = 0;
+      requestAnimationFrame(this.animate);
+    },
+    animate: function(time) {
+      if(time > jsSlider.timeEnd + 2700) {
+        for(var i = 0; i < this.childs_.length; i++) {
+          var child = $(this.childs_[i]);
+          child.css('left', (child.width() + 15) * i + 'px');
+        }
+        jsSlider.timeEnd = time;
+      }
+      requestAnimationFrame(jsSlider.animate);
+    }
+  }
+
+  jsSlider.init($('#main-slider'));
+})();
 
 var View = (function() {
   "use strict";

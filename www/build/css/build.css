@@ -142,9 +142,7 @@ body.on-shadow::before {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  left: 0;
-  top: 0;
+  position: fixed;
   width: 100%;
   height: 56px;
   background-color: #fff;
@@ -234,7 +232,8 @@ body.on-shadow::before {
 .main-slider {
   height: 220px;
   background-image: linear-gradient(to bottom, #DA5301, #FE8700);
-  z-index: 2; }
+  z-index: 2;
+  margin-top: 56px; }
 
 .main-cards {
   position: relative;
@@ -516,7 +515,7 @@ body.on-shadow::before {
   line-height: 27px; }
 
 .foods {
-  padding: 20px 15px; }
+  padding: 20px 15px 76px 15px; }
 
 .foods__item:first-child {
   margin-top: 0; }
@@ -691,7 +690,7 @@ body.on-shadow::before {
 .basket-calc {
   padding: 15px 0;
   border-bottom: 1px solid #f4f4f4;
-  margin-bottom: 7px; }
+  margin-bottom: 120px; }
 
 .basket-calc__item {
   display: flex;
@@ -709,9 +708,8 @@ body.on-shadow::before {
   color: #b3b3b3; }
 
 .basket-order-bar {
-  position: sticky;
+  position: fixed;
   bottom: 0;
-  left: 0;
   height: 112px;
   width: 100%;
   background-color: #fff;
@@ -740,6 +738,45 @@ body.on-shadow::before {
   line-height: 56px;
   text-transform: uppercase;
   outline: none; }
+
+.basket-fixed {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  height: 48px;
+  width: 100%;
+  background-color: #F4F4F4;
+  padding: 15px;
+  z-index: 4;
+  transition: bottom 0.27s; }
+
+.basket-fixed--hidden {
+  bottom: -56px; }
+
+.basket-fixed__text-1,
+.basket-fixed__text-2 {
+  font-size: 14px; }
+
+.basket-fixed__text-1 {
+  text-transform: uppercase;
+  margin-left: 15px; }
+
+.basket-fixed__text-2 {
+  margin-left: 20px; }
+
+.basket-fixed__price {
+  font-size: 18px;
+  font-weight: 500; }
+
+.basket-fixed__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #000; }
 
 .basket-getup-form {
   padding: 15px; }
@@ -881,3 +918,25 @@ body.on-shadow::before {
 
 #send-del-load-screen.none {
   opacity: 0; }
+
+.main-slider {
+  position: relative;
+  overflow: hidden; }
+
+.main-slider__list {
+  position: absolute;
+  height: 100%; }
+
+.main-slider__item {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 20px 0 20px 15px;
+  transition: left 0.20s; }
+
+.main-slider__item-text {
+  font-size: 16px;
+  color: #fff;
+  font-weight: 300;
+  line-height: 21px;
+  margin-top: 13px; }

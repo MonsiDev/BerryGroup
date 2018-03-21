@@ -51,8 +51,17 @@
     <span>Настройки</span>
   </a>
 </div>
-  <div class="main-slider">
-  
+  <div class="main-slider" id="main-slider">
+  <div class="main-slider__list">
+    <div class="main-slider__item">
+      <img src="img/card.png" alt="" class="main-slider__item-image">
+      <div class="main-slider__item-text">Дисконтные карты </div>
+    </div>
+    <div class="main-slider__item">
+      <img src="img/card-2.png" alt="" class="main-slider__item-image">
+      <div class="main-slider__item-text">Дисконтные карты </div>
+    </div>
+  </div>
 </div>
   <div class="main-cards">
   <div class="main-card go-frame" data-frame="#restaurant" data-url="http://xn--80ajjbkbdnbpvp4e9c.xn--p1ai/" data-iframe="spletni-rest">
@@ -193,6 +202,20 @@
 </div>
   <div class="foods" id="foods-container">
   </div>
+<div class="basket-fixed basket-fixed--hidden go-basket go-frame fixed" data-frame="#basket" id="basket-fixed">
+  <div style="display:flex;align-items:center">
+    <div class="basket-fixed__icon">
+      <img src="img/shopping-cart.svg" width="15px" height="15px" alt="">
+    </div>
+    <span class="basket-fixed__text-1">В КОРЗИНЕ ТОВАРОВ:</span>
+    <span class="basket-fixed__text-2">
+      <span id="basket-bar-fixed-count">0</span> шт.
+    </span>
+  </div>
+  <div class="basket-fixed__price">
+    <span id="basket-bar-fixed-price">0</span> ₽
+  </div>
+</div>
 </div>
 <div class="app__item" id="basket">
   <div class="foods-header">
@@ -200,7 +223,7 @@
   <div class="foods-header__title">Корзина</div>
 </div>
   <div class="basket-logo">
-  <img src="img/spletni-logo-large.png" alt="" class="basket-logo__img">
+  <img src="img/logo.png" alt="" class="basket-logo__img">
 </div>
   <div id="basket-orders">
     <div class="basket-order">
@@ -271,7 +294,7 @@
     <span>бесплатно</span>
   </div>
 </div>
-<div class="basket-order-bar">
+<div class="basket-order-bar fixed">
   <div class="basket-order-bar__info basket-total">
     <span>Итого:</span>
     <span>1680 руб.</span>
@@ -327,7 +350,7 @@
     <span>бесплатно</span>
   </div>
 </div>
-    <div class="basket-order-bar">
+    <div class="basket-order-bar fixed">
   <div class="basket-order-bar__info basket-total">
     <span>Итого:</span>
     <span>1680 руб.</span>
