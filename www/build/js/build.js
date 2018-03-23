@@ -2002,11 +2002,11 @@ var cFoods = {
       };
       $(this.orderForms[i])
         .find(this.__const.orderMinus)
-        .on("touchstart", this.orderPop.bind(bindData));
+        .on("click", this.orderPop.bind(bindData));
       $(this.orderForms[i])
         .find(this.__const.orderPlus)
-        .on("touchstart", this.orderPush.bind(bindData));
-      $(this.formButtons[i]).on("touchstart", this.orderPush.bind(bindData));
+        .on("click", this.orderPush.bind(bindData));
+      $(this.formButtons[i]).on("click", this.orderPush.bind(bindData));
     }
   }
 };
@@ -2149,7 +2149,7 @@ var cNet = {
         restLi.setAttribute("data-frame", "#foods");
         restLi.setAttribute("data-rest-category", each["id"]);
         restLi.innerHTML = each["name"];
-        $(restLi).on("touchend", Core.onEventGo);
+        $(restLi).on("click", Core.onEventGo);
         $("#rest-list").append(restLi);
       });
       cNet.restSetting();
