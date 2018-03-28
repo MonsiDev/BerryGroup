@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="build/reset.css">
+        <link rel="stylesheet" href="build/fonts.css">
+        <link rel="stylesheet" href="build/css/build.min.css">
+        <title>BerryGroup</title>
+    </head>
+    <body>
+  <div class="launch-screen" id="launch_screen">
+  <img src="img/logo-large.png" class="launch-screen__logo">
+</div>
+<div class="app" id="app">
+  <div class="app__list" id="app-list">
+    <div class="app__item" id="main">
+  <div class="main-header">
+  <button class="btn main-header__menu icon icon--menu" id="nav_show" data-activity="#main_nav"></button>
+  <img src="img/logo.png" alt="" class="main-header__logo">
+  <button class="icon icon--cart btn main-header__cart go-frame go-basket" data-frame="#basket"></button>
+</div>
+  <div class="main-nav" id="main_nav">
+  <div class="main-nav__user">
+    <img src="img/auth.png" alt="" class="main-nav__icon">
+    <div class="main-nav__action">
+        <a href="#" class="main-nav__auth">Войдите</a>
+        <a href="#" class="main-nav__reg">Или зарегестрируйтесь</a>
+    </div>
+  </div>
+  <a href="#" class="main-nav__item go-frame" data-frame="#basket">
+    <i class="icon icon--cart-item"></i>
+    <span>Корзина</span>
+  </a>
+  <a href="#" class="main-nav__item">
+    <i class="icon icon--food"></i>
+    <span>Заведения</span>
+  </a>
+  <a href="#" class="main-nav__item">
+    <i class="icon icon--card"></i>
+    <span>Накопительные карты</span>
+  </a>
+  <a href="#" class="main-nav__item main-nav__item--border">
+    <i class="icon icon--phone"></i>
+    <span>Позвонить нам</span>
+  </a>
+  <a href="#" class="main-nav__item">
+    <i class="icon icon--cog"></i>
+    <span>Настройки</span>
+  </a>
+</div>
+  <div class="main-slider" id="main-slider">
+  <div class="main-slider__item">
+    <img src="img/card.png" alt="" class="main-slider__item-image">
+    <div class="main-slider__item-text">Дисконтные карты </div>
+  </div>
+  <div class="main-slider__item">
+    <img src="img/card-2.png" alt="" class="main-slider__item-image">
+    <div class="main-slider__item-text">Дисконтные карты </div>
+  </div>
+</div>
+  <div class="main-cards">
+  <div class="main-card go-frame" data-frame="#restaurant" data-url="http://xn--80ajjbkbdnbpvp4e9c.xn--p1ai/" data-iframe="spletni-rest">
+  <img src="img/spletni.png" class="main-card__bg" alt="">
+  <div class="main-card__logo">
+    <img src="img/spletni-logo.png" alt="">
+  </div>
+  <div class="main-card__info">
+    <div class="main-card__header">Кафе "Сплетни"</div>
+    <div class="main-card__text">Средний чек 1200 рублей</div>
+  </div>
+</div>
+<iframe src="http://xn--80ajjbkbdnbpvp4e9c.xn--p1ai/mobidix/proxy" id="spletni-rest" style="display:none" width=0 height=0 hidden></iframe>
+  <div class="main-card go-frame" data-frame="#restaurant" data-url="http://xn--80aakdqcldhs1ap7f5c.xn--p1ai/" data-iframe="rediska-rest">
+  <img src="img/rediska.png" class="main-card__bg" alt="">
+  <div class="main-card__logo">
+    <img src="img/rediska-logo.png" alt="">
+  </div>
+  <div class="main-card__info">
+    <div class="main-card__header">Буфет "Редиска"</div>
+    <div class="main-card__text">Средний чек 500 рублей</div>
+  </div>
+</div>
+<iframe src="http://xn--80aakdqcldhs1ap7f5c.xn--p1ai/mobidix/proxy" id="rediska-rest" style="display:none" width=0 height=0 hidden></iframe>
+  <div class="main-card go-frame" data-frame="#restaurant" data-url="http://xn--80abaqpbjfcfu8aa6h6cg.xn--p1ai" data-iframe="blackberry-rest">
+  <img src="img/blackberry.png" class="main-card__bg" alt="">
+  <div class="main-card__logo">
+    <img src="img/blackberry-logo.png" alt="">
+  </div>
+  <div class="main-card__info">
+    <div class="main-card__header">BlackBerry</div>
+    <div class="main-card__text">Средний чек 1200 рублей</div>
+  </div>
+</div>
+<iframe src="http://xn--80abaqpbjfcfu8aa6h6cg.xn--p1ai/mobidix/proxy" id="blackberry-rest" style="display:none" width=0 height=0 hidden></iframe>
+  <div class="main-card go-frame" data-frame="#restaurant" data-url="http://xn--80abidcsbqhs1aea6h6c.xn--p1ai/" data-iframe="redberry-rest">
+  <img src="img/redberry.png" class="main-card__bg" alt="">
+  <div class="main-card__logo">
+    <img src="img/redberry-logo.png" alt="">
+  </div>
+  <div class="main-card__info">
+    <div class="main-card__header">RedBerry</div>
+    <div class="main-card__text">Средний чек 1200 рублей</div>
+  </div>
+</div>
+<iframe src="http://xn--80abidcsbqhs1aea6h6c.xn--p1ai/mobidix/proxy" id="redberry-rest" style="display:none" width=0 height=0 hidden></iframe>
+  <div class="main-card go-frame" data-frame="#restaurant" data-url="http://xn--80abdhgtfkhsgx3h3c.xn--p1ai/" data-iframe="broadway-rest">
+  <img src="img/broadway.png" class="main-card__bg" alt="">
+  <div class="main-card__logo">
+    <img src="img/broadway-logo.png" alt="">
+  </div>
+  <div class="main-card__info">
+    <div class="main-card__header">BroadWay</div>
+    <div class="main-card__text">Средний чек 900 рублей</div>
+  </div>
+</div>
+<iframe src="http://xn--80abdhgtfkhsgx3h3c.xn--p1ai/mobidix/proxy" id="broadway-rest" style="display:none" width=0 height=0 hidden></iframe>
+  <div class="main-card go-frame" data-frame="#restaurant" data-url="http://xn--80aacqpbogq2aainz0d8d.xn--p1ai/" data-iframe="fastberry-rest">
+  <img src="img/fastberry.png" class="main-card__bg" alt="">
+  <div class="main-card__logo">
+    <img src="img/fastberry-logo.png" alt="">
+  </div>
+  <div class="main-card__info">
+    <div class="main-card__header">Fast Berry</div>
+    <div class="main-card__text">Средний чек 1200 рублей</div>
+  </div>
+</div>
+<iframe src="http://xn--80aacqpbogq2aainz0d8d.xn--p1ai/mobidix/proxy" id="fastberry-rest" style="display:none" width=0 height=0 hidden></iframe>
+  <div class="main-card go-frame" data-frame="#restaurant" data-url="http://xn--80aawchdfdkc6cl2dvd.xn--p1ai/" data-iframe="minutka-rest">
+  <img src="img/minutka.png" class="main-card__bg" alt="">
+  <div class="main-card__logo">
+    <img src="img/minutka-logo.png" alt="">
+  </div>
+  <div class="main-card__info">
+    <div class="main-card__header">Бистро "Минутка"</div>
+    <div class="main-card__text">Средний чек 400 рублей</div>
+  </div>
+</div>
+<iframe src="http://xn--80aawchdfdkc6cl2dvd.xn--p1ai/mobidix/proxy" id="minutka-rest" style="display:none" width=0 height=0 hidden></iframe>
+  <div class="main-card go-frame" data-frame="#restaurant" data-url="http://xn--80apbgcemwkg6d1ch.xn--p1ai/" data-iframe="tirex-rest">
+  <img src="img/tirex.png" class="main-card__bg" alt="">
+  <div class="main-card__logo">
+    <img src="img/tirex-logo.png" alt="">
+  </div>
+  <div class="main-card__info">
+    <div class="main-card__header">Кафе "Тирекс"</div>
+    <div class="main-card__text">Средний чек 1200 рублей</div>
+  </div>
+</div>
+<iframe src="http://xn--80apbgcemwkg6d1ch.xn--p1ai/mobidix/proxy" id="tirex-rest" style="display:none" width=0 height=0 hidden></iframe>
+</div>
+</div>
+<div class="app__item" id="restaurant">
+	<div class="rest-header" style="background-image:url('img/spletni.png');" id="rest-header-bg">
+  <div class="rest-header__bar">
+    <button class="rest-header__back icon icon--arrow-left back-frame"></button>
+    <button class="rest-header__bar-info icon icon--info" id="rest-info-activity" data-activity="#rest-info"></button>
+  </div>
+  <div class="rest-info__window" id="rest-info">
+  <div class="rest-info__window-bar">
+    <button class="rest-info__window-close icon icon--close" id="rest-info-unactivity" data-unactivity="#rest-info"></button>
+    <div class="rest-info__window-title">Информация</div>
+  </div>
+  <div class="rest-info__contact" id="sett-info-phone">
+    <div class="rest-info__contact-label">Телефон</div>
+    <div class="rest-info__contact-text">+7 (928) 720-720-0</div>
+  </div>
+  <div class="rest-info__contact" id="sett-info-sched">
+    <div class="rest-info__contact-label">Время работы</div>
+    <div class="rest-info__contact-text">11.00 - 00.00</div>
+  </div>
+  <div class="rest-info__contact" id="sett-info-address">
+    <div class="rest-info__contact-label">Адрес</div>
+    <div class="rest-info__contact-text">г. Нальчик, ул. Кешокова, 77</div>
+  </div>
+</div>
+  <div class="rest-header__logo">
+    <img src="img/spletni-logo.png" id="rest-header-logo">
+  </div>
+  <div class="rest-header__info">
+    <div class="rest-header__title" id="rest-header-title">Кафе "Сплетни"</div>
+    <div class="rest-header__stars">
+  <button class="rest-header__star active"></button>
+  <button class="rest-header__star active"></button>
+  <button class="rest-header__star active"></button>
+  <button class="rest-header__star active"></button>
+  <button class="rest-header__star"></button>
+</div>
+  </div>
+</div>
+		<ul class="rest-list" id="rest-list">
+  </ul>
+</div>
+<div class="app__item" id="foods">
+  <div class="foods-header">
+  <button class="foods-header__back icon icon--arrow-left-gray back-frame"></button>
+  <div class="foods-header__title" id="foods-header-title">Завтраки</div>
+</div>
+  <div class="foods" id="foods-container">
+  </div>
+<div class="basket-fixed basket-fixed--hidden go-basket go-frame fixed" data-frame="#basket" id="basket-fixed">
+  <div style="display:flex;align-items:center">
+    <div class="basket-fixed__icon">
+      <img src="img/shopping-cart.svg" width="15px" height="15px" alt="">
+    </div>
+    <span class="basket-fixed__text-1">В КОРЗИНЕ ТОВАРОВ:</span>
+    <span class="basket-fixed__text-2">
+      <span id="basket-bar-fixed-count">0</span> шт.
+    </span>
+  </div>
+  <div class="basket-fixed__price">
+    <span id="basket-bar-fixed-price">0</span> ₽
+  </div>
+</div>
+</div>
+<div class="app__item" id="basket">
+  <div class="foods-header">
+  <button class="foods-header__back icon icon--arrow-left-gray back-frame"></button>
+  <div class="foods-header__title">Корзина</div>
+</div>
+  <div class="basket-logo">
+  <img src="img/logo.png" alt="" class="basket-logo__img">
+</div>
+  <div id="basket-orders">
+    <div class="basket-order">
+  <img src="img/order-basket.png" alt="" class="basket-order__img">
+  <div class="basket-order__info">
+    <div class="basket-order__title">
+      Авокадо с креветками
+      <span>200 г</span>
+    </div>
+    <div class="basket-order__items">
+      <div class="basket-order__item">
+        <span>Количество</span>
+        <span>2 шт</span>
+      </div>
+      <div class="basket-order__item">
+        <span>Цена</span>
+        <span>840 руб.</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="basket-order">
+  <img src="img/order-basket.png" alt="" class="basket-order__img">
+  <div class="basket-order__info">
+    <div class="basket-order__title">
+      Авокадо с креветками
+      <span>200 г</span>
+    </div>
+    <div class="basket-order__items">
+      <div class="basket-order__item">
+        <span>Количество</span>
+        <span>2 шт</span>
+      </div>
+      <div class="basket-order__item">
+        <span>Цена</span>
+        <span>840 руб.</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="basket-order">
+  <img src="img/order-basket.png" alt="" class="basket-order__img">
+  <div class="basket-order__info">
+    <div class="basket-order__title">
+      Авокадо с креветками
+      <span>200 г</span>
+    </div>
+    <div class="basket-order__items">
+      <div class="basket-order__item">
+        <span>Количество</span>
+        <span>2 шт</span>
+      </div>
+      <div class="basket-order__item">
+        <span>Цена</span>
+        <span>840 руб.</span>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+  <div class="basket-calc">
+  <div class="basket-calc__item basket-del-total">
+    <span>Сумма</span>
+    <span>1680 руб</span>
+  </div>
+  <div class="basket-calc__item basket-del-type">
+    <span>Доставка</span>
+    <span>бесплатно</span>
+  </div>
+</div>
+<div class="basket-order-bar fixed">
+  <div class="basket-order-bar__info basket-total">
+    <span>Итого:</span>
+    <span>1680 руб.</span>
+  </div>
+  <button class="basket-order-bar__button go-frame" data-frame="#basket-getup">Оформить заказ</button>
+</div>
+</div>
+<div class="app__item" id="basket-getup">
+  <div class="foods-header">
+  <button class="foods-header__back icon icon--arrow-left-gray back-frame"></button>
+  <div class="foods-header__title">Оформление заказа</div>
+</div>
+<div id="send-del-load-screen">
+  Отправляется заявка...
+</div>
+  <div class="basket-getup-form">
+  <div class="basket-getup-form__title">Как с вами связаться?</div>
+  <div class="basket-getup-form__group-field">
+    <input type="text" class="basket-getup-form__field" id="delivery-phone" placeholder="Телефон">
+  </div>
+  <div class="basket-getup-form__group-field">
+    <input type="text" class="basket-getup-form__field" id="delivery-name" placeholder="Имя *">
+  </div>
+</div>
+  <div class="basket-getup-delivery">
+  <div class="basket-getup-delivery__title">Доставка</div>
+  <div class="basket-getup-delivery__subtitle">При стоимости заказа от 1000 рублей - доставка курьером бесплатно.</div>
+  <div class="basket-getup-delivery__list">
+  <div class="basket-getup-delivery__item">
+    <label class="basket-getup-delivery__radio basket-getup-delivery__radio--checked">
+      <input type="radio" name="type-delivery" data-delivery=true checked>
+      <span class="basket-getup-delivery__radio-title">Доставка курьером (100 руб)</span>
+    </label>
+  </div>
+  <div class="basket-getup-delivery__item">
+    <label class="basket-getup-delivery__radio">
+      <input type="radio" name="type-delivery" data-delivery=false>
+      <span class="basket-getup-delivery__radio-title">Самовывоз (Бесплатно)</span>
+    </label>
+  </div>
+</div>
+  <div class="basket-getup-form__group-field basket-getup-form__group-field--border">
+    <input type="text" class="basket-getup-form__field" id="delivery-address" placeholder="Адрес доставки*">
+  </div>
+</div>
+  <div class="basket-calc">
+  <div class="basket-calc__item basket-del-total">
+    <span>Сумма</span>
+    <span>1680 руб</span>
+  </div>
+  <div class="basket-calc__item basket-del-type">
+    <span>Доставка</span>
+    <span>бесплатно</span>
+  </div>
+</div>
+    <div class="basket-order-bar fixed">
+  <div class="basket-order-bar__info basket-total">
+    <span>Итого:</span>
+    <span>1680 руб.</span>
+  </div>
+  <button class="basket-order-bar__button go-frame" id="delivery-send">Заказать</button>
+</div>
+</div>
+  </div>
+</div>
+  </body>
+</html>
+<script src="build/jquery.min.js"></script>
+<script src="build/js/build.js"></script>
+<script src="build/index.js"></script>

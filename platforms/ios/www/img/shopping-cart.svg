@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1922 1651 17 16.318">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <g id="shopping-cart" transform="translate(1922 1651)">
+    <circle id="Ellipse_10" data-name="Ellipse 10" class="cls-1" cx="0.682" cy="0.682" r="0.682" transform="translate(5.773 13.955)"/>
+    <circle id="Ellipse_11" data-name="Ellipse 11" class="cls-1" cx="0.682" cy="0.682" r="0.682" transform="translate(13.273 13.955)"/>
+    <path id="Path_20" data-name="Path 20" class="cls-1" d="M1,1H3.727l1.827,9.13a1.364,1.364,0,0,0,1.364,1.1h6.627a1.364,1.364,0,0,0,1.364-1.1L16,4.409H4.409" transform="translate(0)"/>
+  </g>
+</svg>

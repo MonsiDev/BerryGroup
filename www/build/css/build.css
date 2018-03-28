@@ -164,9 +164,9 @@ body.on-shadow::before {
 .main-nav {
   position: fixed;
   top: 0;
-  left: -364px;
+  left: -88%;
   height: 100vh;
-  width: 87.923%;
+  width: 77%;
   background-color: #fff;
   z-index: 4;
   transition: left 0.23s; }
@@ -296,6 +296,17 @@ body.on-shadow::before {
   font-size: 16px;
   color: #fff;
   font-weight: 500; }
+
+@media screen and (max-width: 340px) {
+  .main-card {
+    display: flex;
+    align-items: flex-end;
+    padding: 20px 15px;
+    position: relative;
+    margin-top: 30px;
+    height: 150px; }
+  .main-card__header {
+    font-size: 1em; } }
 
 .rest-header {
   position: relative;
@@ -1110,3 +1121,7 @@ ul.bxslider {
   font-weight: 300;
   line-height: 21px;
   margin-top: 13px; }
+
+@media screen and (max-width: 340px) {
+  .main-slider__item {
+    margin-right: 0px; } }
