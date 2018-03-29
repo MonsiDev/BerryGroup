@@ -15,6 +15,8 @@
     </plugin>
     <access origin="*" />
     <access origin="https://google.ru" />
+    <access origin="http://xn--80aawchdfdkc6cl2dvd.xn--p1ai/" />
+    <allow-intent href="http://xn--80aawchdfdkc6cl2dvd.xn--p1ai/" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
