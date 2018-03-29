@@ -6,7 +6,7 @@
         <a href="#" class="main-nav__reg">Или зарегестрируйтесь</a>
     </div>
   </div>
-  <a href="#" class="main-nav__item go-frame" data-frame="#restaurant">
+  <a href="#" class="main-nav__item go-frame" data-frame="#basket">
     <i class="icon icon--cart-item"></i>
     <span>Корзина</span>
   </a>

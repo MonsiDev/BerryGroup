@@ -1,0 +1,19 @@
+#send-del-load-screen {
+  display: none;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.90);
+  z-index: 100;
+  opacity: 1;
+  font-size: 20px;
+  transition: opacity 3s;
+}
+
+#send-del-load-screen.none {
+  opacity: 0;
+}

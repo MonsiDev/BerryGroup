@@ -79,3 +79,17 @@
   color: #fff;
   font-weight: 500;
 }
+
+@media screen and (max-width: 340px) {
+  .main-card {
+    display: flex;
+    align-items: flex-end;
+    padding: 20px 15px;
+    position: relative;
+    margin-top: 30px;
+    height: 150px;
+  }
+  .main-card__header {
+    font-size: 1em;
+  }
+}
