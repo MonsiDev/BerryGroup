@@ -32,7 +32,6 @@ var app = {
   // 'pause', 'resume', etc.
   onDeviceReady: function() {
     this.receivedEvent("deviceready");
-    cNet.init();
     Basket.init();
     Core.init();
     View.init();
@@ -40,7 +39,7 @@ var app = {
       $("#main_nav").removeClass("active");
       $('body').removeClass("on-shadow");
     });
-    Foods.init($("#foods-container"))
+    cFoods.init($("#foods-container"));
     Radio.init($(".basket-getup-delivery__radio"));
   },
 
@@ -58,5 +57,3 @@ var app = {
     }
   }
 };
-
-app.initialize();
