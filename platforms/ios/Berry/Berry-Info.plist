@@ -51,6 +51,12 @@
     <dict>
       <key>NSAllowsArbitraryLoads</key>
       <true/>
+      <key><em>NSIncludesSubdomains</em></key>
+      <true/>
+      <key><em>NSTemporaryExceptionAllowsInsecureHTTPLoads</em></key>
+      <true/>
+      <key><em>NSTemporaryExceptionMinimumTLSVersion</em></key>
+      <string>TLSv1.1</string>
     </dict>
   </dict>
 </plist>

@@ -5,6 +5,7 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="build/reset.css">
         <link rel="stylesheet" href="build/fonts.css">
         <link rel="stylesheet" href="build/css/build.min.css">
