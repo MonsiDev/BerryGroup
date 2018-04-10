@@ -50,11 +50,11 @@
     <key>NSAppTransportSecurity</key>
     <key>NSAllowsArbitraryLoads</key>
     <true/>
-    <key><em>NSIncludesSubdomains</em></key>
+    <key>NSIncludesSubdomains</key>
     <true/>
-    <key><em>NSTemporaryExceptionAllowsInsecureHTTPLoads</em></key>
+    <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
     <true/>
-    <key><em>NSTemporaryExceptionMinimumTLSVersion</em></key>
+    <key>NSTemporaryExceptionMinimumTLSVersion</key>
     <string>TLSv1.1</string>
   </dict>
 </plist>
