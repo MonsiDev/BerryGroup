@@ -3,7 +3,7 @@
     <img src="img/auth.png" alt="" class="main-nav__icon">
     <div class="main-nav__action">
         <a href="#" class="main-nav__auth">Войдите</a>
-        <a href="#" class="main-nav__reg">Или зарегестрируйтесь</a>
+        <a href="#" class="main-nav__reg">Или зарегистрируйтесь</a>
     </div>
   </div>
   <a href="#" class="main-nav__item go-frame" data-frame="#basket">
