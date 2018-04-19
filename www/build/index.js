@@ -31,13 +31,16 @@ var app = {
   // Bind any cordova events here. Common events are:
   // 'pause', 'resume', etc.
   onDeviceReady: function() {
+    setTimeout(function() {
+      navigator.splashscreen.hide();
+    }, 3000);
     this.receivedEvent("deviceready");
     Basket.init();
     Core.init();
     View.init();
     $(".main-nav__item").on("click", function(_e) {
       $("#main_nav").removeClass("active");
-      $('body').removeClass("on-shadow");
+      $("body").removeClass("on-shadow");
     });
     cFoods.init($("#foods-container"));
     Radio.init($(".basket-getup-delivery__radio"));
