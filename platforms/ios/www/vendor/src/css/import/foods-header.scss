@@ -1,0 +1,22 @@
+.foods-header {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.16);
+}
+
+.foods-header__back {
+  width: 56px;
+  height: 56px;
+  outline: none;
+  background-color: #fff;
+  border: none;
+}
+
+.foods-header__title {
+  margin-left: 15px;
+  color: #454442;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 27px;
+}

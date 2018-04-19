@@ -12,12 +12,14 @@
   "dependencies": {
     "cordova-ios": "^4.5.4",
     "cordova-plugin-inappbrowser": "^3.0.0",
-    "cordova-plugin-whitelist": "^1.3.3"
+    "cordova-plugin-whitelist": "^1.3.3",
+    "cordova-plugin-camera": "~2.3.0"
   },
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
-      "cordova-plugin-inappbrowser": {}
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-camera": {}
     },
     "platforms": [
       "ios"

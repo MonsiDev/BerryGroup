@@ -1,0 +1,19 @@
+.app {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app__list {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  transition: left 0.23s;
+}
+
+.app__item {
+  position: absolute;
+  height: 100vh;
+  overflow: auto;
+}
