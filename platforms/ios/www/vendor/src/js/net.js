@@ -1,16 +1,16 @@
 var cNet = {
   restSetting: function() {
-    minXDM.go("GET", "setting", "", function(_e) {
-      var json = _e.data;
-      $("#sett-info-sched").show();
-      $("#sett-info-phone .rest-info__contact-text").html(json["phone"]);
-      if (json["schedule"]) {
-        $("#sett-info-sched .rest-info__contact-text").html(json["schedule"]);
-      } else {
-        $("#sett-info-sched").hide();
-      }
-      $("#sett-info-address .rest-info__contact-text").html(json["address"]);
-    });
+    // minXDM.go("GET", "setting", "", function(_e) {
+    //   var json = _e.data;
+    //   $("#sett-info-sched").show();
+    //   $("#sett-info-phone .rest-info__contact-text").html(json["phone"]);
+    //   if (json["schedule"]) {
+    //     $("#sett-info-sched .rest-info__contact-text").html(json["schedule"]);
+    //   } else {
+    //     $("#sett-info-sched").hide();
+    //   }
+    //   $("#sett-info-address .rest-info__contact-text").html(json["address"]);
+    // });
   },
   addGood: function(title, imgUrl, desc, price, weight, url) {
     var item = document.createElement("DIV");
@@ -93,11 +93,12 @@ var cNet = {
     return item;
   },
   restFoods: function() {
-    minXDM.go("GET", "goods?id=" + Core.restCategory, "", function(_e) {
-      var json = _e.data;
+    WSocket.send("goods=" + Core.restCategory);
+    WSocket.onmessage = function(_e) {
+      var json = JSON.parse(_e.data);
       if (json["code"] != 1753) {
         $("#foods-container").html("");
-        json.forEach(function(each) {
+        json["data"].forEach(function(each) {
           $("#foods-container").append(
             cNet.addGood(
               each["name"],
@@ -111,13 +112,14 @@ var cNet = {
         });
         cFoods.init($("#foods-container"));
       }
-    });
+    };
   },
   restCategory: function() {
-    minXDM.go("GET", "category", "", function(_e) {
+    WSocket.send("category=true");
+    WSocket.onmessage = function(_e) {
       $("#rest-list").html("");
-      var json = _e.data;
-      json.forEach(function(each) {
+      var json = JSON.parse(_e.data);
+      json["data"].forEach(function(each) {
         var restLi = document.createElement("LI");
         restLi.classList.add("rest-list__item", "go-frame");
         restLi.setAttribute("data-frame", "#foods");
@@ -127,6 +129,6 @@ var cNet = {
         document.getElementById("rest-list").appendChild(restLi);
       });
       cNet.restSetting();
-    });
+    };
   }
 };

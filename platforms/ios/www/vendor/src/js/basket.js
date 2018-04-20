@@ -152,32 +152,29 @@ var Basket = {
             });
           }
         }
-        minXDM.go(
-          "POST",
-          "send",
-          {
-            total: this.total,
-            goods: delSend,
-            delivery: this.delivery,
-            name: $("#delivery-name").val(),
-            phone: $("#delivery-phone").val(),
-            address: $("#delivery-address").val()
-          },
-          function(_e) {
-            var json = _e.data;
-            if (json["status"] == "OK") {
-              $("#basket-orders").html("");
-              Basket.goods = [];
-              Basket.total = 0;
-              $("#send-del-load-screen").text("Отправлено");
-              $("#send-del-load-screen").addClass("none");
-              animate(3000, function() {
-                $("#send-del-load-screen").css("display", "");
-                Basket.goBasket();
-              });
-            }
+        WSocket.send('delivery=' + JSON.stringify({
+          total: this.total,
+          goods: delSend,
+          delivery: this.delivery,
+          name: $("#delivery-name").val(),
+          phone: $("#delivery-phone").val(),
+          address: $("#delivery-address").val()
+        }));
+        WSocket.onmessage = function(_e) {
+          var json = JSON.parse(_e.data);
+          console.log(json);
+          if (json["status"] == "OK") {
+            $("#basket-orders").html("");
+            Basket.goods = [];
+            Basket.total = 0;
+            $("#send-del-load-screen").text("Отправлено");
+            $("#send-del-load-screen").addClass("none");
+            animate(3000, function() {
+              $("#send-del-load-screen").css("display", "");
+              Basket.goBasket();
+            });
           }
-        );
+        }
       }
     }
   }

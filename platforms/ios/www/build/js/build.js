@@ -176,32 +176,29 @@ var Basket = {
             });
           }
         }
-        minXDM.go(
-          "POST",
-          "send",
-          {
-            total: this.total,
-            goods: delSend,
-            delivery: this.delivery,
-            name: $("#delivery-name").val(),
-            phone: $("#delivery-phone").val(),
-            address: $("#delivery-address").val()
-          },
-          function(_e) {
-            var json = _e.data;
-            if (json["status"] == "OK") {
-              $("#basket-orders").html("");
-              Basket.goods = [];
-              Basket.total = 0;
-              $("#send-del-load-screen").text("Отправлено");
-              $("#send-del-load-screen").addClass("none");
-              animate(3000, function() {
-                $("#send-del-load-screen").css("display", "");
-                Basket.goBasket();
-              });
-            }
+        WSocket.send('delivery=' + JSON.stringify({
+          total: this.total,
+          goods: delSend,
+          delivery: this.delivery,
+          name: $("#delivery-name").val(),
+          phone: $("#delivery-phone").val(),
+          address: $("#delivery-address").val()
+        }));
+        WSocket.onmessage = function(_e) {
+          var json = JSON.parse(_e.data);
+          console.log(json);
+          if (json["status"] == "OK") {
+            $("#basket-orders").html("");
+            Basket.goods = [];
+            Basket.total = 0;
+            $("#send-del-load-screen").text("Отправлено");
+            $("#send-del-load-screen").addClass("none");
+            animate(3000, function() {
+              $("#send-del-load-screen").css("display", "");
+              Basket.goBasket();
+            });
           }
-        );
+        }
       }
     }
   }
@@ -2085,17 +2082,17 @@ function animate(duration, func_end_anim) {
 
 var cNet = {
   restSetting: function() {
-    minXDM.go("GET", "setting", "", function(_e) {
-      var json = _e.data;
-      $("#sett-info-sched").show();
-      $("#sett-info-phone .rest-info__contact-text").html(json["phone"]);
-      if (json["schedule"]) {
-        $("#sett-info-sched .rest-info__contact-text").html(json["schedule"]);
-      } else {
-        $("#sett-info-sched").hide();
-      }
-      $("#sett-info-address .rest-info__contact-text").html(json["address"]);
-    });
+    // minXDM.go("GET", "setting", "", function(_e) {
+    //   var json = _e.data;
+    //   $("#sett-info-sched").show();
+    //   $("#sett-info-phone .rest-info__contact-text").html(json["phone"]);
+    //   if (json["schedule"]) {
+    //     $("#sett-info-sched .rest-info__contact-text").html(json["schedule"]);
+    //   } else {
+    //     $("#sett-info-sched").hide();
+    //   }
+    //   $("#sett-info-address .rest-info__contact-text").html(json["address"]);
+    // });
   },
   addGood: function(title, imgUrl, desc, price, weight, url) {
     var item = document.createElement("DIV");
@@ -2178,11 +2175,12 @@ var cNet = {
     return item;
   },
   restFoods: function() {
-    minXDM.go("GET", "goods?id=" + Core.restCategory, "", function(_e) {
-      var json = _e.data;
+    WSocket.send("goods=" + Core.restCategory);
+    WSocket.onmessage = function(_e) {
+      var json = JSON.parse(_e.data);
       if (json["code"] != 1753) {
         $("#foods-container").html("");
-        json.forEach(function(each) {
+        json["data"].forEach(function(each) {
           $("#foods-container").append(
             cNet.addGood(
               each["name"],
@@ -2196,13 +2194,14 @@ var cNet = {
         });
         cFoods.init($("#foods-container"));
       }
-    });
+    };
   },
   restCategory: function() {
-    minXDM.go("GET", "category", "", function(_e) {
+    WSocket.send("category=true");
+    WSocket.onmessage = function(_e) {
       $("#rest-list").html("");
-      var json = _e.data;
-      json.forEach(function(each) {
+      var json = JSON.parse(_e.data);
+      json["data"].forEach(function(each) {
         var restLi = document.createElement("LI");
         restLi.classList.add("rest-list__item", "go-frame");
         restLi.setAttribute("data-frame", "#foods");
@@ -2212,7 +2211,7 @@ var cNet = {
         document.getElementById("rest-list").appendChild(restLi);
       });
       cNet.restSetting();
-    });
+    };
   }
 };
 
@@ -2334,35 +2333,21 @@ var View = (function() {
 
 View.init();
 
-(function() {
-  "use strict";
-  var minXDM = {
-    response: function() {},
-    go: function(
-      _method = "GET",
-      uri = "category",
-      _data = {},
-      _response
-    ) {
-      this.win = Core.restIframe.contentWindow;
-      this.response = _response;
-      this.win.postMessage(
-        {
-          method: _method,
-          param: uri,
-          data: _data
-        },
-        "*"
-      );
-    }
-  };
-  function listener(_e) {
-    minXDM.response(_e);
-  }
-  if (window.addEventListener) {
-    window.addEventListener("message", listener, false);
+var WSocket = new WebSocket('ws://82.146.54.90:2346');
+
+WSocket.onopen = function() {
+
+};
+
+WSocket.onclose = function(event) {
+  if (event.wasClean) {
+    alert('Соединение закрыто чисто');
   } else {
-    window.attachEvent("onmessage", listener);
+    alert('Обрыв соединения'); // например, "убит" процесс сервера
   }
-  window["minXDM"] = minXDM;
-})();
+  alert('Код: ' + event.code + ' причина: ' + event.reason);
+};
+
+WSocket.onerror = function(error) {
+  alert("Ошибка " + error.message);
+};

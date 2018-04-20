@@ -8,4 +8,3 @@
     <div class="main-card__text">Средний чек 1200 рублей</div>
   </div>
 </div>
-<iframe src="https://xn--80apbgcemwkg6d1ch.xn--p1ai/mobidix/proxy" id="tirex-rest" style="display:none" width=0 height=0 hidden></iframe>

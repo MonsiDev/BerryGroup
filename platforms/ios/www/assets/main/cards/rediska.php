@@ -8,4 +8,3 @@
     <div class="main-card__text">Средний чек 500 рублей</div>
   </div>
 </div>
-<iframe src="https://xn--80aakdqcldhs1ap7f5c.xn--p1ai/mobidix/proxy" id="rediska-rest" style="display:none" width=0 height=0 hidden></iframe>
